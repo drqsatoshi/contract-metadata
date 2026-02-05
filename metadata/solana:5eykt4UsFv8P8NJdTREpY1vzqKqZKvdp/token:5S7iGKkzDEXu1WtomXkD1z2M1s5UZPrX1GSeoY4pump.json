@@ -3,5 +3,6 @@
   "symbol": "DrQ",
   "decimals": 6,
   "spl20": true,
+  "description": "{\"website\":\"https://drqsatoshin.com/\",\"info\":\"DrQ is a cross-chain token enabling interoperability between Solana and Ethereum networks. The project leverages Solana's speed and low fees while maintaining Ethereum compatibility, developed by whale developers including Paul Martin and other contributors working within the Axiom ecosystem.\"}",
   "logo": "./icons/solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp/token:5S7iGKkzDEXu1WtomXkD1z2M1s5UZPrX1GSeoY4pump.svg"
 }
