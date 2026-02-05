@@ -4518,5 +4518,12 @@
     "erc20": true,
     "symbol": "FPS",
     "decimals": 18
+  },
+  "0x78B5290269740033B05BD8D71c97331295eB5918": {
+    "name": "Dr Q",
+    "logo": "drq.svg",
+    "erc20": true,
+    "symbol": "DrQ",
+    "decimals": 18
   }
 }
