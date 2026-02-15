@@ -122,11 +122,14 @@ test('verify does not crash when metadata.logo is missing', function (t) {
 
 test('parseCAIP19 accepts asset references with hyphens', function (t) {
   // Test valid CAIP-19 identifiers with hyphens in asset reference
+  // While standard Ethereum addresses don't contain hyphens, the CAIP-19 spec
+  // allows hyphens in asset_reference (e.g., custom namespaces, token IDs).
+  // These tests verify regex compliance with the spec.
   const validIdentifiers = [
-    'eip155:1/erc20:0x6B17-5474-E890',
-    'solana:mainnet/spl:token-with-hyphen',
-    'eip155:137/erc721:0xABC-DEF-123',
-    'cosmos:cosmoshub-4/slip44:118-test'
+    'eip155:1/erc20:0x6B17-5474-E890',  // Testing hyphen support in asset ref
+    'solana:mainnet/spl:token-with-hyphen',  // Custom token identifier
+    'eip155:137/erc721:0xABC-DEF-123',  // Testing hyphen support
+    'cosmos:cosmoshub-4/slip44:118-test'  // Custom asset reference
   ]
 
   validIdentifiers.forEach((caipId) => {
