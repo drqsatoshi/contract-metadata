@@ -119,3 +119,30 @@ test('verify does not crash when metadata.logo is missing', function (t) {
 
   t.end()
 })
+
+test('parseCAIP19 accepts asset references with hyphens', function (t) {
+  // Test valid CAIP-19 identifiers with hyphens in asset reference
+  const validIdentifiers = [
+    'eip155:1/erc20:0x6B17-5474-E890',
+    'solana:mainnet/spl:token-with-hyphen',
+    'eip155:137/erc721:0xABC-DEF-123',
+    'cosmos:cosmoshub-4/slip44:118-test'
+  ]
+
+  validIdentifiers.forEach((caipId) => {
+    const result = cli.parseCAIP19(caipId)
+    t.ok(result, `parseCAIP19 should accept: ${caipId}`)
+    t.equal(typeof result, 'object', `parseCAIP19 should return an object for: ${caipId}`)
+  })
+
+  // Test invalid CAIP-19 identifiers (asset reference too long - over 64 chars)
+  const tooLongAssetRef = 'eip155:1/erc20:' + 'a'.repeat(65)
+  try {
+    cli.parseCAIP19(tooLongAssetRef)
+    t.fail('parseCAIP19 should reject asset reference longer than 64 characters')
+  } catch (err) {
+    t.ok(err.message.includes('Invalid CAIP-19'), 'parseCAIP19 should throw error for too long asset reference')
+  }
+
+  t.end()
+})
